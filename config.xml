@@ -4,6 +4,8 @@
 	id		= "com.phonegap.getting.started"
 	version 	= "1.0.0">
 
+	<title>Illusions</title>
+	
 	<name>Illusions</name>
 	
 	<description>
