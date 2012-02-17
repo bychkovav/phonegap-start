@@ -59,7 +59,7 @@ $('#page-map').live("pageshow", function () {
 $('.refresh').live("tap", function () {
 
     var currentPosition = {};
-    navigator.geolocation.watchPosition(function (position) {
+    //navigator.geolocation.watchPosition(function (position) {
         // Real App code
         //currentPosition.latitude = position.coords.latitude;
         //currentPosition.longitude = position.coords.longitude;
@@ -84,9 +84,9 @@ $('.refresh').live("tap", function () {
                             getClubLocation();
                         }
                     });
-    }, function (error) {
-        fadingMsg("Sorry, can't find you");
-    });
+   // }, function (error) {
+     //   fadingMsg("Sorry, can't find you");
+    //});
     // END: Tracking location with test lat/long coordinates
     $(this).removeClass($.mobile.activeBtnClass);
     return false;
@@ -337,7 +337,11 @@ $('#about').live('pageshow', function (e, data) {
             var xml = $.parseXML(responseText);
             $('item', xml).each(function () {
                 var item = $(this);
-                $('#about').find('div.content').append(item.find('mobilecontent').text());
+                var content = $(item.find('mobilecontent').text());
+                var phone = $(content.find('span span')[1]);
+                phone.html('<a href="tel:' + phone.text() + '">' + phone.text() + "</a>");
+                $('#about').find('div.content').append(content);
+
             });
         }
 
