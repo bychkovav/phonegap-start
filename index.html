@@ -1,9 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta name="viewport" content="width=480; user-scalable=no" />  
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">  
-<title>PhoneGap Android App</title>  
 <!-- STYLES -->
 <link href="illusions_custom.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" href="jquery.mobile.structure-1.0.css" />
@@ -23,10 +17,9 @@
 <script type="text/javascript" src="datebox/jquery.mobile.datebox.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="jquery.ui.map/jquery.ui.map.js"></script>
+<script type="text/javascript" src="jquery.jgfeed.js"></script>
 <script type="text/javascript" src="jquery.ui.map/jquery.ui.map.services.js"></script>
 <script type="text/javascript" src="illusions.js"></script>
-<head>
-<body>
 <!--HOME PAGE-->
 <section id="homePage" data-role="page">
     <img style="z-index: -1; top: 0px; width: 100%;" src="images/logo.png" />
@@ -37,7 +30,7 @@
                     <img src="images/about.png" alt="About us" /></a>
             </div>
             <div>
-                <a href="#events">
+                <a href="#eventsList">
                     <img src="images/events.png" alt="Events" /></a>
             </div>
             <div>
@@ -69,8 +62,7 @@
         <h1>
             Galleries</h1>
     </header>
-    <ul data-role="listview" id="catList">
-    </ul>
+    <ul data-role="listview" id="catList"></ul>
 </section>
 <!--GALLERY ENTRY PAGE-->
 <section id="galleryEntry" data-role="page" data-add-back-btn="true">
@@ -78,8 +70,7 @@
         <h1>
             Gallery</h1>
     </header>
-    <ul id="Gallery" class="gallery">
-    </ul>
+    <ul id="Gallery" class="gallery"></ul>
 </section>
 <!--CONTACTS PAGE-->
 <section id="contacts" data-role="page" data-add-back-btn="true">
@@ -87,54 +78,7 @@
         <h1>
             Contact Us</h1>
     </header>
-    <div class="content" data-role="content">
-        <h5>
-            Directions</h5>
-        <ul style="font-size: small; list-style: none; padding: 0;">
-            <li>
-                <h3>
-                    LIE (East/West)</h3>
-                <p>
-                    Exit 53 (Sagtikos Pkwy), go south to Exit S3 (Pine Aire Drive), make left at light.
-                    Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
-                    Club is on the right about 100ft down.</p>
-            </li>
-            <li>
-                <h3>
-                    From Northern State (East/West)</h3>
-                <p>
-                    to Sagtikos Pkwy South (Exit 44), go to Exit S3 (Pine Aire Drive), make left at
-                    light. Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
-                    Club is on the right about 100ft down.
-                </p>
-            </li>
-            <li>
-                <h3>
-                    From Southern State (East/West)</h3>
-                <p>
-                    to Sagtikos Pkwy North (Exit 44), go to Exit S3 (Pine Aire Drive), make left at
-                    light. Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
-                    Club is on the right about 100ft down.
-                </p>
-            </li>
-            <li>
-                <h3>
-                    From Commack Road
-                </h3>
-                <p>
-                    to Gran Blvd.
-                    <br />
-                    *if coming from Expwy (travelling south) -> make left
-                    <br />
-                    *if coming towards (travelling north) -> make right make left on Industry Court,
-                    go to Saxwood Street, make right, Club is on the left.</p>
-            </li>
-        </ul>
-        Still can't find us? Give us a call!<br />
-        <h2>
-            <a href="tel:6313921355">(631)-392-1355</a></h2>
-        <br />
-    </div>
+    <div class="content" data-role="content" ></div>
 </section>
 <!--RESERVE PAGE-->
 <section id="reserve" data-role="page" data-add-back-btn="true">
@@ -159,15 +103,13 @@
                 <textarea cols="40" rows="8" name="textarea" id="textarea"></textarea>
             </p>
             <p>
-                <a href="#reserveDialog" data-rel="dialog" data-transition="pop" data-role="button"
-                    id="reserveButton">Reserve</a> <span style="display: none" id="reserveCalee" />
-                </span>
+                <a href="#reserveDialog" data-role="button" id="reserveButton">Reserve</a>
             </p>
         </div>
     </div>
 </section>
 <!--RESERVE DIALOG PAGE-->
-<section id="reserveDialog" data-role="page" data-add-back-btn="false">
+<section id="reserveDialog" data-role="page" data-add-back-btn="true">
     <div data-role="header">
         <h1>
             Reserved</h1>
@@ -175,124 +117,40 @@
     <div data-role="content" id="text">
         <p style="text-align: center">
             Your booking is pending confirmation</p>
-        <a onclick="$.mobile.changePage($('#reserveCalee').text())" data-role="button" id="A1">
-            OK</a>
     </div>
 </section>
-<!--EVENTS PAGE-->
-<section id="events" data-role="page" data-add-back-btn="true">
+<!--EVENTS LIST PAGE-->
+<section id="eventsList" data-role="page" data-add-back-btn="true">
     <header data-role="header">
         <h1>
             Events</h1>
     </header>
     <div class="content" data-role="content">
-        <ul data-role="listview">
-            <li><a href="#">
-                <div style="float: left; width: 25%; height: 70px; background: url(images/events/event1.jpg);
-                    background-position: 190px 660px; border: 3px solid #c0c0c0; -webkit-border-radius: 3px;
-                    -moz-border-radius: 3px; -khtml-border-radius: 3px;">
-                </div>
-                <div style="display: inline-block; margin: 10px; width: 65%">
-                    <h6>
-                        New year event</h6>
-                    <p>
-                        New year mega party! The best girls and the best music!
-                    </p>
-                </div>
-            </a>
-                <ul>
-                    <li>
-                        <h6 style="text-align: center">
-                            New year event</h6>
-                        <div style="width: 80%; height: 300px; margin: 10%;">
-                            <img src="images/events/event1.jpg" style="width: 100%; height: 100%; background-position: 190px 660px;
-                                border: 3px solid #c0c0c0; -webkit-border-radius: 3px; -moz-border-radius: 3px;
-                                -khtml-border-radius: 3px;" />
-                        </div>
-                        <p style="overflow: visible; white-space: normal; margin-left: 10%; margin-right: 10%;">
-                            New year mega party! The best girls and the best music!
-                        </p>
-                        <br />
-                        <div>
-                            <a data-role="button" href="#reserve">Reserve</a>
-                        </div>
-                        <div style="display: none">
-                            <span id="eventDate">2012-03-01</span> <span id="eventTime">20:00</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#">
-                <div style="float: left; width: 25%; height: 70px; background: url(images/events/event2.jpg);
-                    background-position: 185px 340px; border: 3px solid #c0c0c0; -webkit-border-radius: 3px;
-                    -moz-border-radius: 3px; -khtml-border-radius: 3px;">
-                </div>
-                <div style="display: inline-block; margin: 10px; width: 65%;">
-                    <h6>
-                        Club's birthday event</h6>
-                    <p>
-                        Club's birthday party! The greatest event of the year!
-                    </p>
-                </div>
-            </a>
-                <ul>
-                    <li>
-                        <h6 style="text-align: center">
-                            Club's birthday event</h6>
-                        <div style="width: 80%; height: 300px; margin: 10%;">
-                            <img src="images/events/event2.jpg" style="width: 100%; height: 100%; background-position: 190px 660px;
-                                border: 3px solid #c0c0c0; -webkit-border-radius: 3px; -moz-border-radius: 3px;
-                                -khtml-border-radius: 3px;" />
-                        </div>
-                        <p style="overflow: visible; white-space: normal; margin-left: 10%; margin-right: 10%;">
-                            Club's birthday party! The greatest event of the year!
-                        </p>
-                        <br />
-                        <div>
-                            <a data-role="button" href="#reserve">Reserve</a>
-                        </div>
-                        <div style="display: none">
-                            <span id="eventDate">2012-03-15</span> <span id="eventTime">21:00</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#">
-                <div style="float: left; width: 25%; height: 70px; background: url(images/events/event3.jpg);
-                    background-position: 150px 160px; border: 3px solid #c0c0c0; -webkit-border-radius: 3px;
-                    -moz-border-radius: 3px; -khtml-border-radius: 3px;">
-                </div>
-                <div style="display: inline-block; margin: 10px; width: 65%">
-                    <h6>
-                        Christmas event</h6>
-                    <p>
-                        Christmas party! It's getting hotter before New Year!
-                    </p>
-                </div>
-            </a>
-                <ul>
-                    <li>
-                        <h6 style="text-align: center">
-                            Christmas event</h6>
-                        <div style="width: 80%; height: 300px; margin: 10%;">
-                            <img src="images/events/event3.jpg" style="width: 100%; height: 100%; background-position: 190px 660px;
-                                border: 3px solid #c0c0c0; -webkit-border-radius: 3px; -moz-border-radius: 3px;
-                                -khtml-border-radius: 3px;" />
-                        </div>
-                        <p style="overflow: visible; white-space: normal; margin-left: 10%; margin-right: 10%;">
-                            Christmas party! It's getting hotter before New Year!
-                        </p>
-                        <br />
-                        <div>
-                            <a data-role="button" href="#reserve">Reserve</a>
-                        </div>
-                        <div style="display: none">
-                            <span id="eventDate">2012-03-25</span> <span id="eventTime">22:00</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
+        <ul id="eventListView" data-role="listview">
         </ul>
+    </div>
+</section>
+<!--EVENTS ENTRY PAGE-->
+<section id="eventEntry" data-role="page" data-add-back-btn="true">
+    <header data-role="header">
+        <h1>
+            Events
+        </h1>
+    </header>
+    <div class="content" data-role="content">
+        <h3 style="text-align: center">
+            New year event</h3>
+        <div style="width: 80%; height: 300px; margin: 10%;">
+            <img src="" style="width: 100%; height: 100%; background: url(images/ajax-loader.gif) no-repeat center;
+                border: 3px solid #c0c0c0; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+                -khtml-border-radius: 3px;" alt="" />
+        </div>
+        <p style="overflow: visible; white-space: normal; margin-left: 10%; margin-right: 10%;">
+        </p>
+        <br />
+        <div>
+            <a data-role="button" id="btnReserve">Reserve</a>
+        </div>
     </div>
 </section>
 <!--MAP PAGE-->
@@ -348,13 +206,65 @@
         </div>
     </div>
 </section>
+<!--ABOUT US PAGE-->
 <section id="about" data-role="page" data-add-back-btn="true">
     <header data-role="header">
         <h1>
             About Us</h1>
     </header>
-    <div data-role="content" class="content">
-        <h3 style="text-align: center; margin: 0;">
+    <div data-role="content" class="content" style="text-align: center;"></div>
+</section>
+
+<!--Former contact us page-->
+ <!--<h5>
+            Directions</h5>
+        <ul style="font-size: small; list-style: none; padding: 0;">
+            <li>
+                <h3>
+                    LIE (East/West)</h3>
+                <p>
+                    Exit 53 (Sagtikos Pkwy), go south to Exit S3 (Pine Aire Drive), make left at light.
+                    Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
+                    Club is on the right about 100ft down.</p>
+            </li>
+            <li>
+                <h3>
+                    From Northern State (East/West)</h3>
+                <p>
+                    to Sagtikos Pkwy South (Exit 44), go to Exit S3 (Pine Aire Drive), make left at
+                    light. Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
+                    Club is on the right about 100ft down.
+                </p>
+            </li>
+            <li>
+                <h3>
+                    From Southern State (East/West)</h3>
+                <p>
+                    to Sagtikos Pkwy North (Exit 44), go to Exit S3 (Pine Aire Drive), make left at
+                    light. Go 1/2 mile, follow bend in road to 1st stop sign. Make right (Saxwood Street).
+                    Club is on the right about 100ft down.
+                </p>
+            </li>
+            <li>
+                <h3>
+                    From Commack Road
+                </h3>
+                <p>
+                    to Gran Blvd.
+                    <br />
+                    *if coming from Expwy (travelling south) -> make left
+                    <br />
+                    *if coming towards (travelling north) -> make right make left on Industry Court,
+                    go to Saxwood Street, make right, Club is on the left.</p>
+            </li>
+        </ul>
+        Still can't find us? Give us a call!<br />
+        <h2>
+            <a href="tel:6313921355">(631)-392-1355</a></h2>
+        <br />-->
+
+<!--former about content-->
+ <!--<h3 style="text-align: center; margin: 0;">
             Our Address</h3>
         <p style="text-align: center;">
             <span style="font-size: 120%;"><span style="font-size: 140%;">Illusions</span> Gentlemen's
@@ -381,8 +291,4 @@
         </h3>
         <p style="text-align: center;">
             <span style="font-size: 120%;"><strong>Moday - Friday: 3PM - 8PM</strong></span>
-        </p>
-    </div>
-</section>
-</body>
-</html>
+        </p>-->
