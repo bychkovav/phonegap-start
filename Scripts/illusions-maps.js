@@ -1,6 +1,7 @@
 ﻿// Map scripts 
 //************************************************************************
 (function ($) {
+    $.illusions = $.illusions || {};
     $.illusions.maps = $.illusions.maps || {};
 
     $.extend($.illusions.maps, {
