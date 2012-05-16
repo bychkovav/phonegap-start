@@ -48,7 +48,6 @@
             $.illusions.events.entry.init();
             $.illusions.events.list.init();
             $.illusions.gallery.list.init();
-
         }
     });
 })(jQuery);
