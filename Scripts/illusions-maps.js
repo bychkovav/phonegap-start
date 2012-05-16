@@ -21,7 +21,7 @@
         },
 
         getClubLocation: function (mapForm, callback) {
-            mapForm.gmap({ 'center': mapdata.destination,
+            mapForm.gmap({ 'center': $.illusions.maps.options.mapdata.destination,
                 'zoom': 12,
                 'mapTypeControl': false,
                 'navigationControl': false,
@@ -81,7 +81,7 @@
             $('#page-dir').live("pageshow", function () {
                 $.illusions.maps.fadingMsg("Tap any instruction<br/>to see details on map");
             });
-            $('#map').live("pageinit", function () {
+            $('#about').live("pageinit", function () {
                 $.illusions.maps.getClubLocation($('#map_square'));
                 $('#map_square').click(function () {
                     $.mobile.changePage($('#page-map'), {});

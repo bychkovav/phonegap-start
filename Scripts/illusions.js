@@ -170,7 +170,7 @@
         //************************************************************************
         aboutUsInit: function () {
             $('#about').live('pageshow', function (e, data) {
-                if ($('#about').find('div.content').html() == '') {
+                if ($('#about').find('div.aboutContent').html() == '') {
 
                     var xhr = new XMLHttpRequest();
                     var responseText;
