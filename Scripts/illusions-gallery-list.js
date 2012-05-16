@@ -24,7 +24,7 @@
                 $(catListView).children().remove('li');
                 $('item', xml).each(function () {
                     var item = $(this);
-                    var img = $('<img src="images/blank.png" style="width:100%; height:70px; background: url(images/ajax-loader.gif) no-repeat center;"/>')
+                    var img = $('<img src="css/images/blank.png" style="width:100%; height:70px; background: url(css/images/ajax-loader.gif) no-repeat center;"/>')
                 .load(function () {
                     var that = $(this), imgLoad = new Image();
                     $(imgLoad).load(function () {

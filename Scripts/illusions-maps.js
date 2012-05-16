@@ -38,7 +38,9 @@
                                             });
                                         });
                     });
-                callback();
+                if (callback != undefined) {
+                    callback();
+                }
             });
         },
 
@@ -63,7 +65,6 @@
                             $('#map_canvas').gmap('refresh');
                         } else {
                             $.illusions.maps.fadingMsg("Too far from you, to get directions.");
-                            $.illusions.maps.getClubLocation();
                         }
                     });
                 // END: Tracking location with test lat/long coordinates

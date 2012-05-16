@@ -27,7 +27,7 @@
                 $('item', xml).each(function () {
                     var item = $(this);
                     $(imageContainer).append('<li><a href="' + item.find('image').text() + '" rel="external"><img src="' + item.find('thumb').text() +
-                '" alt="" style="width:200px; height:200px; background: url(images/ajax-loader.gif) no-repeat center;" /></a></li>');
+                '" alt="" style="width:200px; height:200px; background: url(css/images/ajax-loader.gif) no-repeat center;" /></a></li>');
                 });
                 $('#Gallery a').photoSwipe();
             };
